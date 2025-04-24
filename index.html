@@ -1,94 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter Characters</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="header">
-        <h1>Harry Potter API</h1>
-        <p class="usuario">Usuario: karen888-star</p>
-        <p class="version">Versión: V.1.0.0</p>
-    </header>
-
-    <nav class="menu">
-        <ul>
-            <li data-section="todos">Personajes</li>
-            <li data-section="conocer">Descubrir</li>
-            <li data-section="peliculas">Películas</li>
-            <li data-section="hechizos">hechizos</li>
-            <li data-section="pocion">pociones</li>
-        </ul>
-    </nav>
-
-    <section class="intro">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/HP_-_Harry_Potter_wordmark.svg" alt="Harry Potter" class="api-image">
-        <div class="api-description">
-            <h2>Acerca de esta API</h2>
-            <p>Esta aplicación se conecta con la poderosa <strong>Harry Potter API</strong>, permitiendo a los usuarios explorar a fondo el fascinante universo mágico creado por J.K. Rowling. Descubre información sobre personajes icónicos, sumérgete en la trama de las películas y explora la riqueza literaria de los libros que dieron vida a este mundo único.</p>
-        </div>
-    </section>
-
-    <main id="main-content">
-        
-        <div id="book_filters">
-            <input type="text" id="book_filter" placeholder="Filtrar por título o autor" />
-            <button id="apply_filter">Buscador de libros</button>
-        </div>
-            <div id="show_characters"></div>
-        <div id="surprise-section">
-            <button id="sorpresa-btn">No presionar</button>
-            <p id="sorpresa-msg" style="display: none;">
-                SABÍAS QUE... La cicatriz en forma de rayo de Harry no solo es un símbolo icónico de la saga, sino también un enlace con Voldemort. ¡Te lo advertí! 🎇
-            </p>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <p>Desarrollado por Karen Borda</p>
-    </footer>
-
-    <script src="./js/fetch_characters.js"></script>
-    <script src="./js/fetch_books.js"></script>
-    <script src="./js/hechizo.js"></script>
-    <script src="./js/pocion.js"></script>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter API - hp-API</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Harry Potter Database</title>
+    <link rel="stylesheet" href="css/main_styles.css">
+    <link rel="stylesheet" href="css/books_styles.css">
+    <link rel="stylesheet" href="css/movies_styles.css">
+    <link rel="stylesheet" href="css/profile_styles.css">
 </head>
 <body>
-    <div class="fondo">
-        <header class="encabezado">
-            <h1>hp-API</h1>
-        </header>
-
-        <main class="contenido">
-            <div class="info-box">
-                <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg" alt="Harry Potter" class="img-api">
-                <div class="descripcion">
-                    <h2>¿Qué es hp-API?</h2>
-                    <p>hp-API es una API pública que proporciona información detallada sobre personajes, libros y películas del universo de Harry Potter.</p>
-                    <p class="version">Versión: V.1.0.0</p>
-                    <p class="usuario">Usuario: karen888-star</p>
-                </div>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h1>Harry Potter DB</h1>
             </div>
-        </main>
-
-        <footer class="pie">
-            <p>© Karen Borda</p>
-        </footer>
-    </div>
+            <div class="nav-menu">
+                <button onclick="showCharacters()" class="nav-button">Personajes</button>
+                <button onclick="showBooks()" class="nav-button">Libros</button>
+                <button onclick="showMovies()" class="nav-button">Películas</button>
+                <button onclick="showSpells()" class="nav-button">Hechizos</button>
+                <button onclick="showProfile()" class="nav-button">Perfil</button>
+            </div>
+        </nav>
+    </header>
+    <main id="main-content">
+        <!-- Contenido dinámico aquí -->
+    </main>
+    
+    <!-- Scripts -->
+    <script src="js/fetch_characters.js"></script>
+    <script src="js/fetch_books.js"></script>
+    <script src="js/fetch_movies.js"></script>
+    <script src="js/fetch_hechizos.js"></script>
+    <script src="js/fetch_profile.js"></script>
 </body>
 </html>
+

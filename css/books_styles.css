@@ -1,0 +1,77 @@
+.book-card {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.book-card img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.book-card .card-content {
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), #ffffff);
+}
+
+.book-author {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.book-release {
+    color: #2d3436;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-pages {
+    color: #2d3436;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.book-summary {
+    color: #2d3436;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.book-order {
+    background-color: #1a472a;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Efectos hover */
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(26, 71, 42, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .book-card img {
+        height: 350px;
+    }
+
+    .book-summary {
+        -webkit-line-clamp: 2;
+    }
+}

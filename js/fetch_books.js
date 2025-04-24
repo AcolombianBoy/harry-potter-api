@@ -4,58 +4,42 @@ async function fetchBooks() {
         const data = await response.json();
         return data.data;
     } catch (error) {
-        console.error('Error fetching books:', error);
+        console.error('Error al cargar los libros:', error);
         throw error;
     }
 }
 
-async function displayBooks(filter = '') {
-    const container = document.getElementById('show_characters');
-    container.innerHTML = '<p>Cargando libros...</p>';
-    
+async function showBooks() {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = '<p>Cargando libros...</p>';
+
     try {
         const books = await fetchBooks();
-        container.innerHTML = '';
-        
-        // Apply filter if provided
-        const filteredBooks = books.filter(book => 
-            book.attributes.title.toLowerCase().includes(filter.toLowerCase()) ||
-            book.attributes.author.toLowerCase().includes(filter.toLowerCase())
-        );
+        const gridContainer = document.createElement('div');
+        gridContainer.className = 'grid-container';
 
-        if (filteredBooks.length === 0) {
-            container.innerHTML = '<p>No se encontraron libros con ese filtro.</p>';
-            return;
-        }
-
-        filteredBooks.forEach(book => {
-            const bookCard = document.createElement('div');
-            bookCard.classList.add('character-card');
-            bookCard.innerHTML = `
-                <h2>${book.attributes.title || 'Título desconocido'}</h2>
-                ${book.attributes.cover ? `<img src="${book.attributes.cover}" alt="${book.attributes.title}">` : ''}
-                <p>Autor: ${book.attributes.author || 'Desconocido'}</p>
+        books.forEach(book => {
+            const card = document.createElement('div');
+            card.className = 'card book-card';
+            card.innerHTML = `
+                <img src="${book.attributes.cover || 'placeholder.jpg'}" alt="${book.attributes.title}">
+                <div class="card-content">
+                    <h2>${book.attributes.title || 'Título Desconocido'}</h2>
+                    <p class="book-author">Autor: ${book.attributes.author || 'Desconocido'}</p>
+                    <p class="book-release">Publicado: ${book.attributes.release_date || 'Fecha desconocida'}</p>
+                    <p class="book-pages">Páginas: ${book.attributes.pages || 'Desconocido'}</p>
+                    <p class="book-summary">${book.attributes.summary || 'Sin resumen disponible'}</p>
+                    <div class="book-details">
+                        <span class="book-order">Libro #${book.attributes.order || '?'}</span>
+                    </div>
+                </div>
             `;
-            container.appendChild(bookCard);
+            gridContainer.appendChild(card);
         });
+
+        mainContent.innerHTML = '';
+        mainContent.appendChild(gridContainer);
     } catch (error) {
-        container.innerHTML = '<p>Error al cargar los libros</p>';
+        mainContent.innerHTML = '<p>Error al cargar los libros</p>';
     }
 }
-
-// Add event listener for filtering books
-function setupBookFilters() {
-    const filterInput = document.getElementById('book_filter');
-    const filterButton = document.getElementById('apply_filter');
-
-    filterButton.addEventListener('click', () => {
-        const filterValue = filterInput.value.trim();
-        displayBooks(filterValue);
-    });
-}
-
-// Initialize filters along with books display
-document.addEventListener('DOMContentLoaded', () => {
-    setupBookFilters();
-    displayBooks(); // Display all books by default
-});
