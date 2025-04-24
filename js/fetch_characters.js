@@ -21,7 +21,23 @@ async function fetchMovies() {
     }
 }
 
+// Function to fetch data from a custom API endpoint
+async function fetchFromCustomEndpoint(endpoint) {
+    const container = document.getElementById('show_characters');
+    container.innerHTML = '<p>Cargando datos...</p>';
 
+    try {
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        container.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    } catch (error) {
+        console.error('Error fetching from custom endpoint:', error);
+        container.innerHTML = '<p>Error al cargar los datos. Verifique el endpoint.</p>';
+    }
+}
 
 // Funciones de display
 async function displayCharacters() {
@@ -91,11 +107,24 @@ async function displayMovies() {
     }
 }
 
-
-
 function displayProfile() {
     const container = document.getElementById('show_characters');
     container.innerHTML = '<p>Sección de perfil en construcción</p>';
+}
+
+// Add event listener for the custom API browser
+function setupApiBrowser() {
+    const browseButton = document.getElementById('browse_api');
+    const endpointInput = document.getElementById('api_endpoint');
+
+    browseButton.addEventListener('click', () => {
+        const endpoint = endpointInput.value.trim();
+        if (endpoint) {
+            fetchFromCustomEndpoint(endpoint);
+        } else {
+            alert('Por favor, ingrese un endpoint válido.');
+        }
+    });
 }
 
 // Manejador del menú
@@ -136,4 +165,4 @@ function handleMenu() {
 document.addEventListener('DOMContentLoaded', () => {
     handleMenu();
     displayCharacters(); // Mostrar todos los personajes por defecto
-});
+    });
