@@ -24,7 +24,7 @@ function showProfile() {
         </div>
         
         <div class="profile-footer">
-            <a href="https://github.com/karen888-star" target="_blank">@karen888-star</a>
+            <a href="https://github.com/karen888-star" target="_blank">@karen8888-star</a>
             <span class="version">v1.0.1</span>
         </div>
     `;
