@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harry Potter Database</title>
-    <link rel="stylesheet" href="css/main_styles.css">
-    <link rel="stylesheet" href="css/books_styles.css">
-    <link rel="stylesheet" href="css/movies_styles.css">
-    <link rel="stylesheet" href="css/profile_styles.css">
+    <link rel="stylesheet" href="./css/main_styles.css">
+    <link rel="stylesheet" href="./css/books_styles.css">
+    <link rel="stylesheet" href="./css/movies_styles.css">
+    <link rel="stylesheet" href="./css/profile_styles.css">
+    <link rel="stylesheet" href="./css/search_styles.css">
 </head>
 <body>
     <header>
         <nav class="main-nav">
             <div class="nav-brand">
                 <h1>Harry Potter DB</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <select id="categorySelect">
+                    <option value="characters">Personajes</option>
+                    <option value="books">Libros</option>
+                    <option value="movies">Películas</option>
+                    <option value="spells">Hechizos</option>
+                </select>
+                <button onclick="performSearch()" class="search-button">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
             </div>
             <div class="nav-menu">
                 <button onclick="showCharacters()" class="nav-button">Personajes</button>
@@ -29,11 +42,12 @@
     </main>
     
     <!-- Scripts -->
-    <script src="js/fetch_characters.js"></script>
-    <script src="js/fetch_books.js"></script>
-    <script src="js/fetch_movies.js"></script>
-    <script src="js/fetch_hechizos.js"></script>
-    <script src="js/fetch_profile.js"></script>
+    <script src="./js/fetch_characters.js"></script>
+    <script src="./js/fetch_books.js"></script>
+    <script src="./js/fetch_movies.js"></script>
+    <script src="./js/fetch_hechizos.js"></script>
+    <script src="./js/fetch_profile.js"></script>
+    <script src="./js/search_script.js"></script>
 </body>
 </html>
 
