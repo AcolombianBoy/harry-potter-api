@@ -6,12 +6,12 @@ function showProfile() {
     
     profileContainer.innerHTML = `
         <div class="profile-header">
-            <h1>Potter DB API</h1>
-            <h2>Created by Daniel Stock</h2>
+            <h1>Potter API</h1>
+            <h2>Created by KAREN SOFIA BORDA WHITE</h2>
         </div>
         
         <div class="profile-image">
-            <img src="https://api.potterdb.com/assets/potterdb-logo.png" alt="Potter DB Logo">
+            <img src="https://www.universalorlando.com/webdata/k2/es/us/files/Images/gds/uor-wwohp-logo-3-kids-clouds-key-art-hero-b.jpg" alt="Potter DB Logo">
         </div>
         
         <div class="profile-description">
@@ -24,7 +24,7 @@ function showProfile() {
         </div>
         
         <div class="profile-footer">
-            <a href="https://github.com/danielstock" target="_blank">@danielstock</a>
+            <a href="https://github.com/karen888-star" target="_blank">@karen888-star</a>
             <span class="version">v1.0.1</span>
         </div>
     `;
