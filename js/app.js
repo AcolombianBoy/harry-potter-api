@@ -1,6 +1,8 @@
-// ==========================
+document.addEventListener('DOMContentLoaded', function() {
+    showMovies();
+});
 // fetch_hechizos.js
-// ==========================
+
 async function fetchSpells() {
     try {
         const response = await fetch('https://api.potterdb.com/v1/spells');
@@ -231,7 +233,8 @@ async function performSearch() {
     mainContent.innerHTML = '<p>Buscando...</p>';
 
     try {
-        const response = await fetch(`https://api.potterdb.com/v1/${category}`);
+        // Pedimos hasta 200 resultados para buscar bien
+        const response = await fetch(`https://api.potterdb.com/v1/${category}?page[size]=200`);
         const data = await response.json();
         const items = data.data;
 
@@ -262,8 +265,7 @@ function displaySearchResults(items, category) {
     items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
-        
-        // Personalizar contenido según la categoría
+
         switch(category) {
             case 'characters':
                 card.innerHTML = `
@@ -280,12 +282,33 @@ function displaySearchResults(items, category) {
                     <div class="card-content">
                         <h2>${item.attributes.title}</h2>
                         <p>${item.attributes.author || 'Autor desconocido'}</p>
+                        <p>${item.attributes.release_date || ''}</p>
                     </div>
                 `;
                 break;
-            // ... añadir casos para otras categorías
+            case 'movies':
+                card.innerHTML = `
+                    <img src="${item.attributes.poster || 'placeholder.jpg'}" alt="${item.attributes.title}">
+                    <div class="card-content">
+                        <h2>${item.attributes.title}</h2>
+                        <p>${item.attributes.release_date || ''}</p>
+                        <p>${item.attributes.running_time || ''}</p>
+                    </div>
+                `;
+                break;
+            case 'spells':
+                card.innerHTML = `
+                    <div class="card-content">
+                        <h2>${item.attributes.name}</h2>
+                        <p>Tipo: ${item.attributes.category || 'Desconocido'}</p>
+                        <p>Efecto: ${item.attributes.effect || 'Desconocido'}</p>
+                    </div>
+                `;
+                break;
+            default:
+                card.innerHTML = `<div class="card-content"><h2>Sin datos</h2></div>`;
         }
-        
+
         gridContainer.appendChild(card);
     });
 
