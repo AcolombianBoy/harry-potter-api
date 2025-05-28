@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter Database</title>
+    <!-- Solo un archivo CSS combinado -->
+
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h1>Harry Potter </h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <select id="categorySelect">
+                    <option value="characters">Personajes</option>
+                    <option value="books">Libros</option>
+                    <option value="movies">Películas</option>
+                    <option value="spells">Hechizos</option>
+                </select>
+                <button onclick="performSearch()" class="search-button">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+            </div>
+            <div class="nav-menu">
+                <button onclick="showCharacters()" class="nav-button">Personajes</button>
+                <button onclick="showBooks()" class="nav-button">Libros</button>
+                <button onclick="showMovies()" class="nav-button">Películas</button>
+                <button onclick="showSpells()" class="nav-button">Hechizos</button>
+                <button onclick="showProfile()" class="nav-button">Perfil</button>
+            </div>
+        </nav>
+    </header>
+    <link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png" type="image/png">
+<meta name="theme-color" content="#222222">
+    <main id="main-content">
+    </main>
+  
+    
+    <link rel="stylesheet" href="app.css">
+<script src="app.js" defer></script>
+
+
+</body>
+</html>
